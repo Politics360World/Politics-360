@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Politics 360</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  background: #eaf3ff;
+  font-family: Arial;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  background: #0755b8;
+  color: white;
+  padding: 22px;
+  border-radius: 15px;
+}
+
+h2 {
+  color: #0755b8;
+}
+
+p {
+  font-size: 18px;
+}
+
+button {
+  width: 90%;
+  padding: 16px;
+  margin: 10px;
+  background: linear-gradient(135deg, #003b80, #1688e8);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px #b0cbea;
+}
+  #quizbox button {
+  background: #0755b8;
+  color: white;
+}
+
+#quizbox button:active {
+  opacity: 0.8;
+}
+</style>
+</head>
+
+<body>
+  <div id="loader" style="position:fixed; inset:0; background:#003b80; color:white; display:flex; flex-direction:column; justify-content:center; align-items:center; z-index:9999;">
+
+  <div style="font-size:50px;">🌍 🇮🇳</div>
+
+  <h2>Politics 360 💙</h2>
+
+  <p>Loading...</p>
+
+  <div style="font-size:30px;">⏳</div>
+
+  </div>
+  <header style="background:linear-gradient(135deg,#003b80,#1688e8); color:white; padding:30px 15px; border-radius:15px; margin-bottom:20px; box-shadow:0 4px 12px #9bbce0;">
+
+  <div style="font-size:45px;">🌍 🇮🇳</div>
+
+  <h1 style="margin:10px 0; font-size:30px;">
+    Politics 360 💙
+  </h1>
+
+  <p style="font-size:16px; margin:5px;">
+    India and World Politics
+  </p>
+
+  <p style="font-size:13px; margin-top:15px;">
+    LEARN • EXPLORE • STAY INFORMED
+  </p>
+
+  </header>
+
+
+  <h2 id="welcome">Welcome!</h2>
+
+
+<button id="latestbtn" onclick="document.getElementById('newsSection').scrollIntoView({behavior:'smooth'})">Latest News</button>
+
+<button id="knowledge" onclick="openKnowledge()">Political Knowledge</button>
+  <div id="knowledgeSection" style="display:none; padding:20px;">
+
+  <h2 id="knowledgeTitle">📚 Political Knowledge</h2>
+
+  <h3 id="constitutionTitle" onclick="showKnowledge('constitution')">🇮🇳 Indian Constitution</h3>
+  <p id="constitutionText">Learn about the Constitution of India.</p>
+
+  <h3 id="parliamentTitle" onclick="showKnowledge('parliament')">🏛️ Parliament</h3>
+  <p id="parliamentText">Learn about Lok Sabha and Rajya Sabha.</p>
+
+  <h3 id="electionsTitle" onclick="showKnowledge('elections')">🗳️ Elections</h3>
+  <p id="electionsText">Learn about the election process in India.</p>
+
+  <h3 id="democracyTitle" onclick="showKnowledge('democracy')">🌍 Democracy</h3>
+  <p id="democracyText">Learn about democracy and its importance.</p>
+<div id="knowledgeDetails" style="margin-top:15px;"></div>
+  </div>
+</div>
+
+
+  <button id="quiz" onclick="openQuiz()">Quiz</button>
+
+
+ <button id="videos" onclick="document.getElementById('videoSection').scrollIntoView({behavior:'smooth'})"
+Videos
+</button>
+  <button id="factsBtn"
+onclick="document.getElementById('factsSection').scrollIntoView({behavior:'smooth'})">
+📊 Political Facts
+  </button>
+<h2 id="newsheading">Latest News</h2>
+  <button id="leadersBtn"
+onclick="document.getElementById('leadersSection').scrollIntoView({behavior:'smooth'})">
+👥 Political Leaders
+  </button>
+  <button id="partiesBtn"
+onclick="document.getElementById('partiesSection').scrollIntoView({behavior:'smooth'})">
+🏛️ Political Parties
+  </button>
+  <button id="datesBtn"
+onclick="document.getElementById('datesSection').scrollIntoView({behavior:'smooth'})">
+📅 Important Political Dates
+  </button>
+<p id="newsintro">Latest Political News Coming Soon!</p> <h3 id="india">India News 🇮🇳</h3 > <p id="indiatext">India ki latest political news yahan dikhegi.</p>
+<h3 id="world">International News 🌍</h3> <p id="worldtext">International ki latest political news yahan dikhegi.</p>  <div style="margin:15px;">
+  <button onclick="setLanguage('hi')">हिंदी</button>
+  <button onclick="setLanguage('en')">English</button>
+</div>
+
+<script>
+  let currentLanguage = 'en';
+  function openKnowledge() {
+  document.getElementById('knowledgeSection').style.display = 'block';
+  document.getElementById('knowledgeSection').scrollIntoView({
+    behavior: 'smooth'
+  });
+  }
+    function showKnowledge(type) {
+  const hindi = currentLanguage === 'hi';
+
+  const data = {
+    constitution: hindi
+      ? 'भारत का संविधान 26 जनवरी 1950 को लागू हुआ। यह देश का सर्वोच्च कानून है।'
+      : 'The Constitution of India came into effect on 26 January 1950. It is the supreme law of the country.',
+
+    parliament: hindi
+      ? 'भारतीय संसद राष्ट्रपति, लोकसभा और राज्यसभा से मिलकर बनती है।'
+      : 'The Indian Parliament consists of the President, Lok Sabha and Rajya Sabha.',
+
+    elections: hindi
+      ? 'भारत में नागरिक चुनावों के माध्यम से अपने प्रतिनिधि चुनते हैं।'
+      : 'In India, citizens choose their representatives through elections.',
+
+    democracy: hindi
+      ? 'लोकतंत्र में जनता अपने प्रतिनिधियों को चुनती है।'
+      : 'In a democracy, people choose their representatives.'
+  };
+
+  document.getElementById('knowledgeDetails').innerText = data[type] || '';
+    }
+  
+function setLanguage(lang) {
+  const hindi = lang === 'hi';
+  currentLanguage = hindi ? 'hi' : 'en';
+
+  const translations = {
+    welcome: ['Welcome!', 'स्वागत है!'],
+    tagline: ['India and World Politics', 'भारत और विश्व की राजनीति'],
+    latestbtn: ['Latest News', 'ताज़ा खबरें'],
+    knowledge: ['Political Knowledge', 'राजनीतिक जानकारी'],
+    quiz: ['Quiz', 'प्रश्नोत्तरी'],
+    videos: ['Videos', 'वीडियो'],
+    factsBtn: ['📊 Political Facts', '📊 राजनीतिक तथ्य'],
+    factsTitle: ['📊 Political Facts & Figures', '📊 राजनीतिक तथ्य और आँकड़े'],
+    presidentTitle: ['🇮🇳 President of India', '🇮🇳 भारत की राष्ट्रपति'],
+    pmTitle: ['🏛️ Prime Minister of India', '🏛️ भारत के प्रधानमंत्री'],
+    lokSabhaTitle: ['🏛️ Lok Sabha Seats', '🏛️ लोकसभा सीटें'],
+    rajyaSabhaTitle: ['🏛️ Rajya Sabha', '🏛️ राज्यसभा'],
+    statesTitle: ['🌍 States of India', '🌍 भारत के राज्य'],
+    lokSabhaText: ['543 elected seats', '543 निर्वाचित सीटें'],
+    rajyaSabhaText: ['245 members', '245 सदस्य'],
+    statesText: ['28 States and 8 Union Territories', '28 राज्य और 8 केंद्र शासित प्रदेश'],
+    presidentText: ['Smt. Droupadi Murmu', 'श्रीमती द्रौपदी मुर्मू'],
+    pmText: ['Shri Narendra Modi', 'श्री नरेंद्र मोदी'],
+    newsheading: ['Latest Political News', 'ताज़ा राजनीतिक खबरें'],
+    newsintro: ['Latest Political News Coming Soon!', 'ताज़ा राजनीतिक खबरें जल्द आ रही हैं!'],
+    india: ['India News 🇮🇳', 'भारत की खबरें 🇮🇳'],
+    indiatext: ['India ki latest political news yahan dikhegi.', 'भारत की ताज़ा राजनीतिक खबरें यहाँ दिखेंगी।'],
+    world: ['International News 🌍', 'अंतरराष्ट्रीय खबरें 🌍'],
+    worldtext: ['International ki latest political news yahan dikhegi.', 'अंतरराष्ट्रीय ताज़ा राजनीतिक खबरें यहाँ दिखेंगी।'],
+    videoTitle: ['📺 Political Videos', '📺 राजनीतिक वीडियो'],
+    indiaVideoTitle: ['🇮🇳 Indian Politics', '🇮🇳 भारतीय राजनीति'],
+    worldVideoTitle: ['🌍 World Politics', '🌍 विश्व राजनीति'],
+    govtVideoTitle: ['🏛️ Government Updates', '🏛️ सरकारी अपडेट'],
+    indiaVideoText: ['Videos about Indian politics and democracy.', 'भारतीय राजनीति और लोकतंत्र से जुड़े वीडियो।'],
+    worldVideoText: ['Videos about world politics and international relations.', 'विश्व राजनीति और अंतरराष्ट्रीय संबंधों से जुड़े वीडियो।'],
+    govtVideoText: ['Educational videos about government and public policies.', 'सरकार और सार्वजनिक नीतियों से जुड़े शैक्षिक वीडियो।'],
+    knowledgeTitle: ['📚 Political Knowledge', '📚 राजनीतिक जानकारी'],
+    constitutionTitle: ['🇮🇳 Indian Constitution', '🇮🇳 भारतीय संविधान'],
+    constitutionText: ['Learn about the Constitution of India.', 'भारत के संविधान के बारे में जानें।'],
+    parliamentTitle: ['🏛️ Parliament', '🏛️ संसद'],
+    parliamentText: ['Learn about Lok Sabha and Rajya Sabha.', 'लोकसभा और राज्यसभा के बारे में जानें।'],
+    electionsTitle: ['🗳️ Elections', '🗳️ चुनाव'],
+    electionsText: ['Learn about the election process in India.', 'भारत में चुनाव प्रक्रिया के बारे में जानें।'],
+    democracyTitle: ['🌍 Democracy', '🌍 लोकतंत्र'],
+    democracyText: ['Learn about democracy and its importance.', 'लोकतंत्र और उसके महत्व के बारे में जानें।'],
+    leadersBtn: ['👥 Political Leaders', '👥 राजनीतिक नेता'],
+    leadersTitle: ['👥 Political Leaders', '👥 राजनीतिक नेता'],
+    presidentLeaderTitle: ['🇮🇳 President of India', '🇮🇳 भारत की राष्ट्रपति'],
+    presidentLeaderName: ['Droupadi Murmu', 'द्रौपदी मुर्मू'],
+    pmLeaderTitle: ['🏛️ Prime Minister of India', '🏛️ भारत के प्रधानमंत्री'],
+    pmLeaderName: ['Narendra Modi', 'नरेंद्र मोदी'],
+    partiesBtn: ['🏛️ Political Parties', '🏛️ राजनीतिक दल'],
+    partiesTitle: ['🏛️ Political Parties', '🏛️ राजनीतिक दल'],
+    bjpTitle: ['🪷 Bharatiya Janata Party (BJP)', '🪷 भारतीय जनता पार्टी (BJP)'],
+    bjpName: ['Bharatiya Janata Party (BJP)', 'भारतीय जनता पार्टी'],
+    congressTitle: ['✋ Indian National Congress', '✋ भारतीय राष्ट्रीय कांग्रेस'],
+    congressName: ['Indian National Congress', 'भारतीय राष्ट्रीय कांग्रेस'],
+    aapTitle: ['🧹 Aam Aadmi Party (AAP)', '🧹 आम आदमी पार्टी (AAP)'],
+    aapName: ['Aam Aadmi Party (AAP)', 'आम आदमी पार्टी'],
+    bspTitle: ['🐘 Bahujan Samaj Party (BSP)', '🐘 बहुजन समाज पार्टी (BSP)'],
+    bspName: ['Bahujan Samaj Party (BSP)', 'बहुजन समाज पार्टी'],
+    spTitle: ['🚲 Samajwadi Party (SP)', '🚲 समाजवादी पार्टी (SP)'],
+    spName: ['Samajwadi Party (SP)', 'समाजवादी पार्टी'],
+    datesBtn: ['📅 Important Political Dates', '📅 महत्वपूर्ण राजनीतिक तिथियाँ'],
+    datesTitle: ['📅 Important Political Dates', '📅 महत्वपूर्ण राजनीतिक तिथियाँ'],
+    republicTitle: ['🇮🇳 Republic Day', '🇮🇳 गणतंत्र दिवस'],
+    independenceTitle: ['🇮🇳 Independence Day', '🇮🇳 स्वतंत्रता दिवस'],
+    constitutionDateTitle: ['📜 Constitution Day', '📜 संविधान दिवस'],
+    votersTitle: ["🗳️ National Voters' Day", '🗳️ राष्ट्रीय मतदाता दिवस'],
+    republicDate: ['26 January', '26 जनवरी'],
+independenceDate: ['15 August', '15 अगस्त'],
+constitutionDate: ['26 November', '26 नवंबर'],
+votersDate: ['25 January', '25 जनवरी'],
+    searchTitle: ['🔍 Political Search', '🔍 राजनीति खोजें'],
+    searchBtn: ['Search', 'खोजें']
+  };
+
+  Object.entries(translations).forEach(([id, values]) => {
+    const element = document.getElementById(id);
+    if (element) element.innerText = hindi ? values[1] : values[0];
+  });
+
+  const langButtons = document.querySelectorAll("button[onclick^=\"setLanguage(\"]");
+  langButtons.forEach(button => {
+    const isHindiButton = button.getAttribute('onclick').includes("'hi'");
+    button.innerText = hindi
+      ? (isHindiButton ? 'हिंदी' : 'अंग्रेज़ी')
+      : (isHindiButton ? 'Hindi' : 'English');
+  });
+
+  // Translate the three news cards without assuming that every card exists.
+  const newsHeading = document.getElementById('newsheading');
+if (newsHeading) {
+  newsHeading.innerText = hindi
+    ? '📰 ताज़ा राजनीतिक खबरें'
+    : '📰 Latest Political News';
+}
+  const newsCards = document.querySelectorAll('#newsSection > div[onclick]');
+  const cardTexts = hindi ? [
+    ['🇮🇳 भारतीय राजनीति', 'भारत की राजनीति, संसद और चुनावों की जानकारी।', 'और पढ़ें'],
+    ['🌍 विश्व राजनीति', 'दुनिया के देशों और अंतरराष्ट्रीय संबंधों की जानकारी।', 'और पढ़ें'],
+    ['🏛️ सरकारी अपडेट', 'सरकारी योजनाओं और घोषणाओं की जानकारी।', 'और पढ़ें']
+  ] : [
+    ['🇮🇳 Indian Politics', 'Latest updates about Indian politics.', 'Read More'],
+    ['🌍 World Politics', 'Latest updates about world politics.', 'Read More'],
+    ['🏛️ Government Updates', 'Important government news and updates.', 'Read More']
+  ];
+
+  newsCards.forEach((card, index) => {
+    const data = cardTexts[index];
+    if (!data) return;
+    const heading = card.querySelector('h3');
+    const paragraph = card.querySelector('p');
+    const button = card.querySelector('button');
+    if (heading) heading.innerText = data[0];
+    if (paragraph) paragraph.innerText = data[1];
+    if (button) button.innerText = data[2];
+  });
+
+  // Keep the quiz language in sync with the main site language.
+  if (typeof setQuizLanguage === 'function') {
+    setQuizLanguage(currentLanguage, false);
+  }
+}
+function searchPolitics() {
+  const input = document.getElementById('searchInput');
+  const result = document.getElementById('searchResult');
+  const query = input ? input.value.trim() : '';
+  const hindi = currentLanguage === 'hi';
+  if (!result) return;
+  if (!query) {
+    result.innerText = hindi ? 'कृपया खोजने के लिए कुछ लिखें।' : 'Please enter something to search.';
+    return;
+  }
+  result.innerText = (hindi ? 'खोजें: ' : 'Search for: ') + query +
+    (hindi ? '\\nअधिक जानकारी के लिए विश्वसनीय समाचार या आधिकारिक वेबसाइट देखें।' :
+    '\\nPlease check trusted news sources or official websites for more information.');
+}
+
+  function openQuiz() {
+    score = 0;
+    currentQuestion = 0;
+    answered = false;
+    document.getElementById('quizbox').style.display = 'block';
+    document.getElementById('restartBtn').style.display = 'none';
+    showQuestion(); // Starts the 15-second timer on the first question.
+    showLeaderboard();
+    document.getElementById('quizbox').scrollIntoView({ behavior: 'smooth' });
+}
+function setQuizLanguage(lang, refresh = true) {
+  quizHindi = lang === 'hi';
+
+  document.querySelector("button[onclick=\"setQuizLanguage('hi')\"]").innerText = quizHindi ? 'हिंदी' : 'Hindi';
+
+  document.querySelector("button[onclick=\"setQuizLanguage('en')\"]").innerText = quizHindi ? 'अंग्रेज़ी' : 'English';
+document.querySelector('button[onclick="nextQuestion()"]').innerText = quizHindi ? 'अगला सवाल' : 'Next Question';
+  document.getElementById('restartBtn').innerText = quizHindi ? '🔄 क्विज़ दोबारा शुरू करें' : '🔄 Restart Quiz';
+  if (refresh && document.getElementById('quizbox').style.display !== 'none') showQuestion();
+}
+function showQuestion() {
+  answered = false;
+  let q = 
+    questions[currentQuestion];
+
+  document.getElementById('question').innerText = quizHindi ? q.hi : q.en;
+
+  let options = quizHindi ? q.optionsHi : q.optionsEn;
+
+  document.getElementById('optionA').innerText = options[0];
+  document.getElementById('optionB').innerText = options[1];
+  document.getElementById('optionC').innerText = options[2];
+  document.getElementById('optionD').innerText = options[3];
+  document.getElementById('optionA').style.backgroundColor = '';
+document.getElementById('optionB').style.backgroundColor = '';
+document.getElementById('optionC').style.backgroundColor = '';
+document.getElementById('optionD').style.backgroundColor = '';
+
+  document.getElementById('result').innerText = '';
+  startTimer();
+}
+  function startTimer() {
+    clearInterval(timer);
+    timeLeft = 15;
+
+    document.getElementById('timerDisplay').innerText = '⏱️ ' + timeLeft;
+    document.getElementById('result').innerText = '';
+
+    timer = setInterval(function() {
+        timeLeft--;
+
+        document.getElementById('timerDisplay').innerText = '⏱️ ' + timeLeft;
+
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+
+            document.getElementById('result').innerText = '⏰ Time Up!';
+
+            setTimeout(function() {
+                nextQuestion();
+            }, 2000);
+        }
+    }, 1000);
+  }
+
+function checkAnswer(answer) {
+    if (answered) return;
+  clearInterval(timer);
+  answered = true;
+  let correct = questions[currentQuestion].answer;
+
+  if (answer === correct) {
+    score++;
+    document.getElementById('option' + answer).style.background = 'green';
+    document.getElementById('result').innerText = quizHindi
+      ? 'बिल्कुल सही जवाब! 🎉'
+      : 'Absolutely correct! 🎉';
+  } else {
+  document.getElementById('option' + answer).style.background = 'red';
+
+document.getElementById('option' + correct).style.background = 'green';
+    document.getElementById('result').innerText = quizHindi
+      ? 'गलत जवाब! फिर कोशिश करो।'
+      : 'Wrong answer! Try again.';
+  }
+  }
+  let questions = [
+      {
+    hi: 'भारत की राजधानी कौन-सी है?',
+    en: 'What is the capital of India?',
+    optionsHi: ['A) मुंबई', 'B) नई दिल्ली', 'C) कोलकाता', 'D) चेन्नई'],
+    optionsEn: ['A) Mumbai', 'B) New Delhi', 'C) Kolkata', 'D) Chennai'],
+    answer: 'B'
+  },
+      {
+    hi: 'भारत का राष्ट्रीय पशु कौन-सा है?',
+    en: 'What is the national animal of India?',
+    optionsHi: ['A) शेर', 'B) हाथी', 'C) बाघ', 'D) घोड़ा'],
+    optionsEn: ['A) Lion', 'B) Elephant', 'C) Tiger', 'D) Horse'],
+    answer: 'C'
+  },
+      {
+    hi: 'भारत का राष्ट्रीय पक्षी कौन-सा है?',
+    en: 'What is the national bird of India?',
+    optionsHi: ['A) मोर', 'B) तोता', 'C) कबूतर', 'D) कौआ'],
+    optionsEn: ['A) Peacock', 'B) Parrot', 'C) Pigeon', 'D) Crow'],
+    answer: 'A'
+  },
+      {
+    hi: 'भारत का स्वतंत्रता दिवस कब मनाया जाता है?',
+    en: 'When is Independence Day celebrated in India?',
+    optionsHi: ['A) 26 जनवरी', 'B) 2 अक्टूबर', 'C) 14 नवंबर', 'D) 15 अगस्त'],
+    optionsEn: ['A) 26 January', 'B) 2 October', 'C) 14 November', 'D) 15 August'],
+    answer: 'D'
+  },
+      {
+    hi: 'भारत का गणतंत्र दिवस कब मनाया जाता है?',
+    en: 'When is Republic Day celebrated in India?',
+    optionsHi: ['A) 15 अगस्त', 'B) 26 जनवरी', 'C) 2 अक्टूबर', 'D) 14 नवंबर'],
+    optionsEn: ['A) 15 August', 'B) 26 January', 'C) 2 October', 'D) 14 November'],
+    answer: 'B'
+  },
+      {
+    hi: 'भारत के राष्ट्रपिता किसे कहा जाता है?',
+    en: 'Who is known as the Father of the Nation in India?',
+    optionsHi: ['A) जवाहरलाल नेहरू', 'B) सुभाष चंद्र बोस', 'C) महात्मा गांधी', 'D) भगत सिंह'],
+    optionsEn: ['A) Jawaharlal Nehru', 'B) Subhas Chandra Bose', 'C) Mahatma Gandhi', 'D) Bhagat Singh'],
+    answer: 'C'
+  },
+      {
+    hi: 'भारत का संविधान कब अपनाया गया था?',
+    en: 'When was the Constitution of India adopted?',
+    optionsHi: ['A) 15 अगस्त 1947', 'B) 26 जनवरी 1950', 'C) 2 अक्टूबर 1949', 'D) 26 नवंबर 1949'],
+    optionsEn: ['A) 15 August 1947', 'B) 26 January 1950', 'C) 2 October 1949', 'D) 26 November 1949'],
+    answer: 'D'
+  },
+      {
+    hi: 'भारत के पहले प्रधानमंत्री कौन थे?',
+    en: 'Who was the first Prime Minister of India?',
+    optionsHi: ['A) जवाहरलाल नेहरू', 'B) डॉ. राजेंद्र प्रसाद', 'C) सरदार पटेल', 'D) लाल बहादुर शास्त्री'],
+    optionsEn: ['A) Jawaharlal Nehru', 'B) Dr. Rajendra Prasad', 'C) Sardar Patel', 'D) Lal Bahadur Shastri'],
+    answer: 'A'
+  },
+  {
+    hi: 'भारत का संविधान कब लागू हुआ?',
+    en: 'When did the Constitution of India come into effect?',
+    optionsHi: ['A) 15 अगस्त 1947', 'B) 26 जनवरी 1950', 'C) 2 अक्टूबर 1950', 'D) 26 नवंबर 1949'],
+    optionsEn: ['A) 15 August 1947', 'B) 26 January 1950', 'C) 2 October 1950', 'D) 26 November 1949'],
+    answer: 'B'
+  },
+  {
+    hi: 'भारत के पहले राष्ट्रपति कौन थे?',
+    en: 'Who was the first President of India?',
+    optionsHi: ['A) जवाहरलाल नेहरू', 'B) डॉ. राजेंद्र प्रसाद', 'C) महात्मा गांधी', 'D) सरदार पटेल'],
+    optionsEn: ['A) Jawaharlal Nehru', 'B) Dr. Rajendra Prasad', 'C) Mahatma Gandhi', 'D) Sardar Patel'],
+    answer: 'B'
+  }
+];
+let currentQuestion = 0;
+  let score = 0;
+  let quizHindi = false;
+  let timeLeft = 15;
+let timer;
+  let highScore = Number(localStorage.getItem('highScore')) || 0;
+  let scores = JSON.parse(localStorage.getItem('scores')) || [];
+  function showLeaderboard() {
+    let topScores = [...scores]
+        .sort((a, b) => b - a)
+        .slice(0, 5);
+
+    document.getElementById('leaderboard').innerText =
+        '🏆 High Score: ' + highScore + ' / ' + questions.length +
+        '\n🥇 Top 5 Scores:\n' +
+        topScores.map((s, i) =>
+            (i + 1) + '. ' + s + ' / ' + questions.length
+        ).join('\n');
+  }
+  let answered = false;
+function restartQuiz() {
+    currentQuestion = 0;
+    score = 0;
+    answered = false;
+    document.getElementById('result').innerText = '';
+    showQuestion();
+  }
+function nextQuestion() {
+  clearInterval(timer);
+    currentQuestion++;
+
+    if (currentQuestion >= questions.length) {
+        currentQuestion = 0;
+
+        document.getElementById('result').innerText = quizHindi
+            ? 'क्विज़ पूरा हुआ! 🎉'
+            : 'Quiz Completed! 🎉';
+
+        document.getElementById('result').innerText += quizHindi
+            ? `\nसही जवाब: ${score} / ${questions.length}`
+            : `\nCorrect Answers: ${score} / ${questions.length}`;
+
+        let wrong = questions.length - score;
+        let percentage = (score / questions.length) * 100;
+
+        if (score > highScore) {
+            highScore = score;
+            localStorage.setItem('highScore', highScore);
+        }
+
+        scores.push(score);
+        localStorage.setItem('scores', JSON.stringify(scores));
+
+        document.getElementById('result').innerText += quizHindi
+            ? `\nगलत जवाब: ${wrong}\nप्रतिशत: ${percentage}%`
+            : `\nWrong Answers: ${wrong}\nPercentage: ${percentage}%`;
+
+        document.getElementById('result').innerText += quizHindi
+            ? `\n🏆 सबसे अच्छा स्कोर: ${highScore} / ${questions.length}`
+            : `\n🏆 High Score: ${highScore} / ${questions.length}`;
+
+        document.getElementById('restartBtn').style.display = 'block';
+
+        showLeaderboard();
+        return;
+    }
+
+    showQuestion();
+        }
+ window.addEventListener('load', function() {
+  const loader = document.getElementById('loader');
+  if (loader) {
+    loader.style.display = 'none';
+  }
+}); 
+</script>
+  <div id="quizbox" style="display:none; padding:20px;">
+    <h3 id="timerDisplay">⏱️ 15</h3>
+  <h2 id="question">भारत का संविधान कब लागू हुआ?</h2>
+  <button id="optionA" onclick="checkAnswer('A')">A) 15 August 1947</button><br><br>
+ <button id="optionB" onclick="checkAnswer('B')">B) 26 January 1950</button><br><br>
+<button id="optionC" onclick="checkAnswer('C')">C) 2 October 1950</button><br><br>
+<button id="optionD" onclick="checkAnswer('D')">D) 26 November 1949</button>
+  <button onclick="setQuizLanguage('hi')">हिंदी</button>
+<button onclick="setQuizLanguage('en')">English</button>
+<button onclick="nextQuestion()">Next Question ➡️</button>
+    <p id="result"></p>
+    <h3>🏆 Leaderboard</h3>
+<p id="leaderboard">अभी कोई स्कोर नहीं है।</p>
+    <button id="restartBtn" onclick="restartQuiz()" style="display:none;">🔄 Restart Quiz</button>
+  </div>
+  <hr>
+
+<div id="newsSection" style="padding:20px;">
+  <h2 id="newsheading">📰 Latest Political News</h2>
+  <div onclick="showNews('india')" style="background:#eaf3ff; padding:15px; border-radius:12px; margin:10px; cursor:pointer;">
+  <h3 id="newsIndiaTitle">🇮🇳 Indian Politics</h3>
+    <a href="https://www.abplive.com/news/india"
+target="_blank"
+onclick="event.stopPropagation()"
+style="display:inline-block; padding:10px 15px; background:#0756a3; color:white; border-radius:8px; text-decoration:none;">
+📰 ABP India News
+    </a>
+  <p>Latest updates about Indian politics.</p>
+    <button onclick="event.stopPropagation(); readMore('india')">और पढ़ें / Read More</button>
+  </div>
+
+<div onclick="showNews('world')" style="background:#eaf3ff; padding:15px; border-radius:12px; margin:10px; cursor:pointer;">
+  <h3>🌍 World Politics</h3>
+  <a href="https://www.bbc.com/news/world"
+target="_blank"
+onclick="event.stopPropagation()"
+style="display:inline-block; padding:10px 15px; background:#0756a3; color:white; border-radius:8px; text-decoration:none;">
+🌍 BBC World News
+  </a>
+  <p>Latest updates about world politics.</p>
+  <button onclick="event.stopPropagation(); readMore('world')">और पढ़ें / Read More</button>
+</div>
+
+<div onclick="showNews('govt')" style="background:#eaf3ff; padding:15px; border-radius:12px; margin:10px; cursor:pointer;">
+  <h3>🏛️ Government Updates</h3>
+  <a href="https://www.pib.gov.in/"
+target="_blank"
+onclick="event.stopPropagation()"
+style="display:inline-block; padding:10px 15px; background:#0756a3; color:white; border-radius:8px; text-decoration:none;">
+🏛️ PIB Official News
+  </a>
+  
+  <p>Important government news and updates.</p>
+<button onclick="event.stopPropagation(); readMore('govt')">और पढ़ें / Read More</button>
+  
+</div>
+<div id="newsDetails" style="background:#fff3cd; padding:15px; border-radius:12px; margin:10px;"></div>
+  <div id="searchSection" style="padding:20px; text-align:center;">
+  <h2>🔍 Political Search</h2>
+
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Search politician, party or country..."
+    style="padding:12px; width:85%;"
+  >
+
+  <button onclick="searchPolitics()">Search</button>
+
+  <div id="searchResult"></div>
+  </div>
+  <div id="videoSection" style="padding:20px; text-align:center;">
+  <h2 id="videoTitle">📺 Political Videos</h2>
+
+  <h3 id="indiaVideoTitle">🇮🇳 Indian Politics</h3>
+  <p id="indiaVideoText">Videos about Indian politics and democracy.</p>
+   <iframe
+  width="100%"
+  height="220"
+  src="https://www.youtube.com/embed/juKwpaMjeI0"
+  allowfullscreen>
+   </iframe> 
+
+  <h3 id="worldVideoTitle">🌍 World Politics</h3>
+    <iframe
+  width="100%"
+  height="220"
+  src="https://www.youtube.com/embed/GkVK892UW5U"
+  allowfullscreen>
+    </iframe>
+  <p id="worldVideoText">Videos about world politics and international relations.</p>
+
+  <h3 id="govtVideoTitle">🏛️ Government Updates</h3>
+  <p id="govtVideoText">Educational videos about government and public policies.</p>
+    <iframe
+  width="100%"
+  height="220"
+  src="https://www.youtube.com/embed/h2hi-nFgz0c"
+  allowfullscreen>
+    </iframe>
+  </div>
+  
+  <script>
+function showNews(type) {
+  readMore(type);
+}
+
+function readMore(type) {
+  const details = document.getElementById('newsDetails');
+  const hindi = currentLanguage === 'hi';
+
+  if (type === 'india') {
+    details.innerHTML = hindi
+      ? '<h3>🇮🇳 भारतीय राजनीति</h3><p>भारत की राजनीतिक पार्टियों, संसद, चुनावों और सरकारी फैसलों के बारे में जानकारी।</p>'
+      : '<h3>🇮🇳 Indian Politics</h3><p>Information about Indian political parties, Parliament, elections and government decisions.</p>';
+  }
+
+  else if (type === 'world') {
+    details.innerHTML = hindi
+      ? '<h3>🌍 विश्व राजनीति</h3><p>दुनिया के देशों, अंतरराष्ट्रीय संबंधों और वैश्विक संगठनों के बारे में जानकारी।</p>'
+      : '<h3>🌍 World Politics</h3><p>Information about countries, international relations and global organisations.</p>';
+  }
+
+  else if (type === 'govt') {
+    details.innerHTML = hindi
+      ? '<h3>🏛️ सरकारी अपडेट</h3><p>सरकारी नीतियों, योजनाओं और आधिकारिक घोषणाओं के बारे में जानकारी।</p>'
+      : '<h3>🏛️ Government Updates</h3><p>Information about public policies, government schemes and official announcements.</p>';
+  }
+
+  details.scrollIntoView({behavior: 'smooth'});
+  loadLiveNews(type);
+}
+async function loadLiveNews(type) {
+  const feeds = {
+    india: 'https://news.abplive.com/news/india/feed',
+    world: 'https://news.abplive.com/news/world/feed',
+    govt: 'https://news.google.com/rss/search?q=site%3Apib.gov.in&hl=hi&gl=IN&ceid=IN%3Ahi'
+  };
+
+  const details = document.getElementById('newsDetails');
+  let box = document.getElementById('liveNews');
+
+  if (!box) {
+    box = document.createElement('div');
+    box.id = 'liveNews';
+    details.appendChild(box);
+  }
+
+  box.innerHTML = '<p>ताज़ा खबरें लोड हो रही हैं...</p>';
+
+  try {
+    const response = await fetch(
+      'https://proxy.cors.dev/' + feeds[type]
+    );
+
+    if (!response.ok) {
+  const code = response.headers.get('X-Cors-Error');
+  throw new Error(
+    'HTTP ' + response.status + ' ' + (code || 'Server Error')
+  );
+    }
+
+    const xmlText = await response.text();
+    const xml = new DOMParser().parseFromString(
+      xmlText, 'text/xml'
+    );
+
+    const items = xml.querySelectorAll('item');
+
+    box.innerHTML = '<h3>📰 Latest Headlines</h3>';
+
+    items.forEach((item, index) => {
+      if (index >= 10) return;
+
+      const title = item.querySelector('title')?.textContent;
+      const link = item.querySelector('link')?.textContent;
+
+      if (title && link) {
+        const p = document.createElement('p');
+        const a = document.createElement('a');
+
+        a.textContent = title;
+        a.href = link;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+
+        p.appendChild(a);
+        box.appendChild(p);
+      }
+    });
+
+  } catch (error) {
+  box.innerHTML = '<p>Error: ' + error.message + '</p>';
+    }
+    }
+  </script>
+  <div id="factsSection" style="padding:20px; text-align:center;">
+  <h2 id="factsTitle">📊 Political Facts & Figures</h2>
+
+  <div style="background:#eaf3ff; padding:15px; margin:10px; border-radius:12px;">
+    <h3 id="presidentTitle">🇮🇳 President of India</h3>
+    <p id="presidentText">Smt. Droupadi Murmu</p>
+  </div>
+
+  <div style="background:#eaf3ff; padding:15px; margin:10px; border-radius:12px;">
+    <h3 id="pmTitle">🏛️ Prime Minister of India</h3>
+    <p id="pmText">Shri Narendra Modi</p>
+  </div>
+
+  <div style="background:#eaf3ff; padding:15px; margin:10px; border-radius:12px;">
+    <h3 id="lokSabhaTitle">🏛️ Lok Sabha Seats</h3>
+    <p id="lokSabhaText">543 elected seats</p>
+  </div>
+
+  <div style="background:#eaf3ff; padding:15px; margin:10px; border-radius:12px;">
+    <h3 id="rajyaSabhaTitle">🏛️ Rajya Sabha</h3>
+    <p id="rajyaSabhaText">245 members</p>
+  </div>
+
+  <div style="background:#eaf3ff; padding:15px; margin:10px; border-radius:12px;">
+    <h3 id="statesTitle">🌍 States of India</h3>
+    <p id="statesText">28 States and 8 Union Territories</p>
+  </div>
+  </div>
+  <div id="leadersSection" style="padding:20px; text-align:center;">
+  <h2 id="leadersTitle">👥 Political Leaders</h2>
+
+  <div style="background:#eaf3ff; padding:15px; margin:10px; border-radius:12px;">
+    <h3 id="presidentLeaderTitle">🇮🇳 President of India</h3>
+<p id="presidentLeaderName">Droupadi Murmu</p>
+  </div>
+
+  <div style="background:#eaf3ff; padding:15px; margin:10px; border-radius:12px;">
+    <h3 id="pmLeaderTitle">🏛️ Prime Minister of India</h3>
+<p id="pmLeaderName">Narendra Modi</p>
+  </div>
+  </div>
+  <div id="partiesSection" style="padding:20px; text-align:center;">
+  <h2 id="partiesTitle">🏛️ Political Parties</h2>
+
+  <div style="background:#eaf3ff; padding:15px; margin:10px; border-radius:12px;">
+    <h3 id="bjpTitle">🪷 Bharatiya Janata Party (BJP)</h3>
+<p id="bjpName">Bharatiya Janata Party (BJP)</p>
+  </div>
+
+  <div style="background:#eaf3ff; padding:15px; margin:10px; border-radius:12px;">
+    <h3 id="congressTitle">✋ Indian National Congress</h3>
+<p id="congressName">Indian National Congress</p>
+  </div>
+
+  <div style="background:#eaf3ff; padding:15px; margin:10px; border-radius:12px;">
+    <h3 id="aapTitle">🧹 Aam Aadmi Party (AAP)</h3>
+<p id="aapName">Aam Aadmi Party (AAP)</p>
+  </div>
+
+  <div style="background:#eaf3ff; padding:15px; margin:10px; border-radius:12px;">
+   <h3 id="bspTitle">🐘 Bahujan Samaj Party (BSP)</h3>
+<p id="bspName">Bahujan Samaj Party (BSP)</p>
+  </div>
+
+  <div style="background:#eaf3ff; padding:15px; margin:10px; border-radius:12px;">
+    <h3 id="spTitle">🚲 Samajwadi Party (SP)</h3>
+<p id="spName">Samajwadi Party (SP)</p>
+  </div>
+  </div>
+  <div id="datesSection" style="padding:20px; text-align:center;">
+  <h2 id="datesTitle">📅 Important Political Dates</h2>
+
+  <div style="background:#eaf3ff; padding:15px; margin:10px; border-radius:12px;">
+    <h3 id="republicTitle">🇮🇳 Republic Day</h3>
+<p id="republicDate">26 January</p>
+  </div>
+
+  <div style="background:#eaf3ff; padding:15px; margin:10px; border-radius:12px;">
+    <h3 id="independenceTitle">🇮🇳 Independence Day</h3>
+<p id="independenceDate">15 August</p>
+  </div>
+
+  <div style="background:#eaf3ff; padding:15px; margin:10px; border-radius:12px;">
+    <h3 id="constitutionDateTitle">📜 Constitution Day</h3>
+<p id="constitutionDate">26 November</p>
+  </div>
+
+  <div style="background:#eaf3ff; padding:15px; margin:10px; border-radius:12px;">
+    <h3 id="votersTitle">🗳️ National Voters' Day</h3>
+<p id="votersDate">25 January</p>
+  </div>
+  </div>
+  <section style="background:#eaf3ff; padding:20px; margin:15px; border-radius:15px;">
+
+  <h2>📩 Contact Us</h2>
+
+  <p>Have questions or suggestions? Contact us!</p>
+
+  <p>कोई सवाल या सुझाव है? हमसे संपर्क करें!</p>
+
+  <a href="mailto:politics360official@gmail.com"
+  style="display:inline-block; background:#0756a3; color:white; padding:12px 25px; border-radius:20px; text-decoration:none;">
+  ✉️ Email Us
+  </a>
+
+  </section>
+  <footer style="background:linear-gradient(135deg,#003b80,#1688e8); color:white; text-align:center; padding:25px 10px; margin-top:30px; border-radius:15px 15px 0 0;">
+
+  <h3>🌍 Politics 360 💙</h3>
+
+  <p>Learn • Explore • Stay Informed</p>
+
+  <p style="font-size:13px;">© 2026 Politics 360. All Rights Reserved.</p>
+<button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+style="background:#ffffff; color:#003b80; border:2px solid white; padding:10px 20px; border-radius:20px; font-weight:bold; cursor:pointer;">
+
+⬆️ Back to Top
+
+</button>
+  </footer>
+</body>
+</html>
