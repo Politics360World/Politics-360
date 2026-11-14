@@ -8,7 +8,7 @@
 
 <style>
 body {
-  background: #eaf3ff;
+  background: linear-gradient(180deg, #eaf3ff 0%, #f7fbff 100%);
   font-family: Arial;
   text-align: center;
   margin: 0;
@@ -22,16 +22,19 @@ h1 {
   border-radius: 15px;
 }
 
-h2 {
-  color: #0755b8;
-}
+  h2 {
+  letter-spacing: 0.5px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  }
 
 p {
   font-size: 18px;
 }
 
 button {
-  width: 90%;
+  width: 92%;
+max-width: 400px;
   padding: 16px;
   margin: 10px;
   background: linear-gradient(135deg, #003b80, #1688e8);
@@ -42,14 +45,53 @@ button {
   font-weight: bold;
   box-shadow: 0 4px 10px #b0cbea;
 }
+  button {
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  box-shadow: 0 6px 16px rgba(0, 59, 128, 0.3);
+}
   #quizbox button {
   background: #0755b8;
   color: white;
 }
+  button {
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  box-shadow: 0 6px 16px rgba(0, 59, 128, 0.3);
+}
 
 #quizbox button:active {
   opacity: 0.8;
+  /* Modern Website Design */
+
+section {
+  background: white;
+  border-radius: 18px;
+  border: 1px solid #d6e7fa;
+  padding: 18px;
+  margin: 15px 0;
+  box-shadow: 0 6px 18px rgba(0, 59, 128, 0.15);
 }
+
+button {
+  transition: 0.3s;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+  button {
+  margin-top: 14px;
+  margin-bottom: 14px;
+  }
 </style>
 </head>
 
@@ -67,24 +109,28 @@ button {
   </div>
   <header style="background:linear-gradient(135deg,#003b80,#1688e8); color:white; padding:30px 15px; border-radius:15px; margin-bottom:20px; box-shadow:0 4px 12px #9bbce0;">
 
-  <div style="font-size:45px;">🌍 🇮🇳</div>
+  <div style="font-size:55px; margin-bottom:10px; filter:drop-shadow(0 3px 5px #001f44);">
+  🌍 🇮🇳
+  </div>
 
-  <h1 style="margin:10px 0; font-size:30px;">
+  <h1 style="margin:10px 0; font-size:34px; letter-spacing:1px; text-shadow:0 3px 6px #002b55;">
     Politics 360 💙
-  </h1>
+  </>
 
   <p style="font-size:16px; margin:5px;">
     India and World Politics
   </p>
 
-  <p style="font-size:13px; margin-top:15px;">
+  <p style="font-size:13px; margin-top:18px; letter-spacing:2px; font-weight:bold; opacity:0.95;">
     LEARN • EXPLORE • STAY INFORMED
-  </p>
+  </>
 
   </header>
 
 
-  <h2 id="welcome">Welcome!</h2>
+  <h2 id="welcome" style="background:white; color:#0755b8; padding:18px; margin:20px 10px; border-radius:15px; box-shadow:0 4px 12px rgba(0,59,128,0.12);">
+  Welcome!
+  </h2>
 
 
 <button id="latestbtn" onclick="document.getElementById('newsSection').scrollIntoView({behavior:'smooth'})">Latest News</button>
