@@ -744,9 +744,11 @@ async function loadLiveNews(type) {
   box.innerHTML = '<p>ताज़ा खबरें लोड हो रही हैं...</p>';
 
   try {
-    const response = await fetch(
-  'https://proxy.cors.dev/' + feeds[type]
-);
+    const proxyUrl = type === 'govt'
+  ? 'https://api.allorigins.win/raw?url=' + encodeURIComponent(feeds[type])
+  : 'https://proxy.cors.dev/' + feeds[type];
+
+const response = await fetch(proxyUrl);
 
     if (!response.ok) {
   const code = response.headers.get('X-Cors-Error');
