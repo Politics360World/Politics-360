@@ -909,5 +909,13 @@ style="background:#ffffff; color:#003b80; border:2px solid white; padding:10px 2
 
 </button>
   </footer>
+  <script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js")
+      .catch(error => console.log("Service worker registration failed:", error));
+  });
+}
+  </script>
 </body>
 </html>
