@@ -1,0 +1,18 @@
+{
+  "name": "Politics 360",
+  "short_name": "Politics 360",
+  "description": "India and World Politics",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#eaf3ff",
+  "theme_color": "#003b80",
+  "icons": [
+    {
+      "src": "./file_00000000c11c82119c28955429cb3ae5.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
