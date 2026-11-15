@@ -745,8 +745,8 @@ async function loadLiveNews(type) {
 
   try {
     const response = await fetch(
-      'https://proxy.cors.dev/' + feeds[type]
-    );
+  'https://api.allorigins.win/raw?url=' + encodeURIComponent(feeds[type])
+);
 
     if (!response.ok) {
   const code = response.headers.get('X-Cors-Error');
