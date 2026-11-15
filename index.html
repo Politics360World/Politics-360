@@ -154,6 +154,8 @@ button:active {
 
   <h3 id="democracyTitle" onclick="showKnowledge('democracy')">🌍 Democracy</h3>
   <p id="democracyText">Learn about democracy and its importance.</p>
+    <h3 id="commissionTitle" onclick="showKnowledge('commission')">🏛️ Election Commission of India</h3>
+<p id="commissionText">Learn about the Election Commission of India.</p>
 <div id="knowledgeDetails" style="margin-top:15px;"></div>
   </div>
 </div>
@@ -211,7 +213,9 @@ onclick="document.getElementById('datesSection').scrollIntoView({behavior:'smoot
     elections: hindi
       ? 'भारत में नागरिक चुनावों के माध्यम से अपने प्रतिनिधि चुनते हैं।'
       : 'In India, citizens choose their representatives through elections.',
-
+commission: hindi
+  ? 'भारत निर्वाचन आयोग एक स्वतंत्र संवैधानिक संस्था है। यह देश में लोकसभा, विधानसभा और राष्ट्रपति चुनावों का संचालन करता है।'
+  : 'The Election Commission of India is an independent constitutional body. It conducts Lok Sabha, State Assembly and Presidential elections.',
     democracy: hindi
       ? 'लोकतंत्र में जनता अपने प्रतिनिधियों को चुनती है।'
       : 'In a democracy, people choose their representatives.'
@@ -265,6 +269,8 @@ function setLanguage(lang) {
     electionsText: ['Learn about the election process in India.', 'भारत में चुनाव प्रक्रिया के बारे में जानें।'],
     democracyTitle: ['🌍 Democracy', '🌍 लोकतंत्र'],
     democracyText: ['Learn about democracy and its importance.', 'लोकतंत्र और उसके महत्व के बारे में जानें।'],
+    commissionTitle: ['🏛️ Election Commission of India', '🏛️ भारत निर्वाचन आयोग'],
+commissionText: ['Learn about the Election Commission of India.', 'भारत निर्वाचन आयोग के बारे में जानें।'],
     leadersBtn: ['👥 Political Leaders', '👥 राजनीतिक नेता'],
     leadersTitle: ['👥 Political Leaders', '👥 राजनीतिक नेता'],
     presidentLeaderTitle: ['🇮🇳 President of India', '🇮🇳 भारत की राष्ट्रपति'],
