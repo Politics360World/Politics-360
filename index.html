@@ -353,17 +353,49 @@ if (newsHeading) {
 function searchPolitics() {
   const input = document.getElementById('searchInput');
   const result = document.getElementById('searchResult');
-  const query = input ? input.value.trim() : '';
+  const query = input.value.trim().toLowerCase();
   const hindi = currentLanguage === 'hi';
-  if (!result) return;
+
   if (!query) {
-    result.innerText = hindi ? 'कृपया खोजने के लिए कुछ लिखें।' : 'Please enter something to search.';
+    result.innerText = hindi
+      ? 'कृपया कुछ खोजें।'
+      : 'Please enter something to search.';
     return;
   }
-  result.innerText = (hindi ? 'खोजें: ' : 'Search for: ') + query +
-    (hindi ? '\\nअधिक जानकारी के लिए विश्वसनीय समाचार या आधिकारिक वेबसाइट देखें।' :
-    '\\nPlease check trusted news sources or official websites for more information.');
-}
+
+  const data = {
+    india: {
+      en: 'India is a democratic country. Its government has three main organs: Legislature, Executive and Judiciary.',
+      hi: 'भारत एक लोकतांत्रिक देश है। इसकी सरकार के तीन मुख्य अंग हैं: विधायिका, कार्यपालिका और न्यायपालिका।'
+    },
+    constitution: {
+      en: 'The Constitution of India came into effect on 26 January 1950.',
+      hi: 'भारत का संविधान 26 जनवरी 1950 को लागू हुआ था।'
+    },
+    parliament: {
+      en: 'The Indian Parliament consists of the President, Lok Sabha and Rajya Sabha.',
+      hi: 'भारतीय संसद में राष्ट्रपति, लोकसभा और राज्यसभा शामिल हैं।'
+    },
+    democracy: {
+      en: 'Democracy is a system in which people choose their representatives through elections.',
+      hi: 'लोकतंत्र एक ऐसी व्यवस्था है जिसमें लोग चुनाव के माध्यम से अपने प्रतिनिधि चुनते हैं।'
+    },
+    election: {
+      en: 'Elections allow citizens to choose their representatives.',
+      hi: 'चुनाव नागरिकों को अपने प्रतिनिधि चुनने का अवसर देते हैं।'
+    }
+  };
+
+  let answer = data[query];
+
+  if (answer) {
+    result.innerText = answer[hindi ? 'hi' : 'en'];
+  } else {
+    result.innerText = hindi
+      ? 'इस विषय की जानकारी अभी उपलब्ध नहीं है।'
+      : 'Information about this topic is not available yet.';
+  }
+  }
 
   function openQuiz() {
     score = 0;
