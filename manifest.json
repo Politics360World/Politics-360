@@ -1,7 +1,8 @@
 {
+  "id": "./",
   "name": "Politics 360",
   "short_name": "Politics 360",
-  "description": "India and World Politics",
+  "description": "India and World Politics - Latest News, Political Knowledge and Quiz",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -10,7 +11,13 @@
   "icons": [
     {
       "src": "./LauncherIcon-192X192.png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./LauncherIcon-512X512.png",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     }
